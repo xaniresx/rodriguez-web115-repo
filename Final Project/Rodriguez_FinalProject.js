@@ -36,9 +36,6 @@ taskNameInput.name = "taskName";
 taskNameInput.placeholder = "Enter Task Name";
 form.appendChild(taskNameInput);   // Appends input box to the form
 
-// Adds spacing between this and next form element
- 
-
 
 // CREATE A DROPDOWN MENU TO SELECT TASK PRIORITY (HIGH, MEDIUM, LOW)
 // Priority Dropdown menu element:
@@ -64,6 +61,18 @@ prioritySelect.appendChild(lowOption);
 
 // Append the drop down menu to the form
 form.appendChild(prioritySelect);
+
+// ADD A CHECKBOX FOR MARKING A TASK AS IMPORTANT
+const importantCheckbox = document.createElement("input");
+importantCheckbox.type = "checkbox";
+importantCheckbox.id = "isImportant";
+importantCheckbox.name = "isImportant";
+form.appendChild(importantCheckbox);
+
+const importantLabel = document.createElement("label");
+importantLabel.textContent = "Important"
+form.appendChild(importantLabel);
+
 
 // Append the form to the div container
 container.appendChild(form);
