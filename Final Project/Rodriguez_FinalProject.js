@@ -27,7 +27,7 @@ container.appendChild(heading);
 const form = document.createElement("form");
 form.id = "taskForm";
 
-// Create an input field where users can enter a task name
+// CREATE AN INPUT FIELD WHERE USERS CAN ENTER A TASK NAME
 // Label for the input box:
 const taskNameLabel = document.createElement("label");
 taskNameLabel.textContent = "Task Name: ";
@@ -39,6 +39,36 @@ taskNameInput.type = "text";
 taskNameInput.id = "taskName";
 taskNameInput.name = "taskName";
 form.appendChild(taskNameInput);   // Appends input box to the form
+
+// CREATE A DROPDOWN MENU TO SELECT TASK PRIORITY (HIGH, MEDIUM, LOW)
+// Label for the priority dropdown menu:
+const priorityLabel = document.createElement("label");
+priorityLabel.textContent = "Priority: ";
+form.appendChild(priorityLabel);
+
+// Priority Dropdown menu element:
+const prioritySelect = document.createElement("select");
+prioritySelect.id = "priority";
+prioritySelect.name = "priority";
+
+// Options for Dropdown menu:
+const highOption = document.createElement("option");
+highOption.value = "High";
+highOption.textContent = "High";
+prioritySelect.appendChild(highOption);
+
+const mediumOption = document.createElement("option");
+mediumOption.value = "Medium";
+mediumOption.textContent = "Medium";
+prioritySelect.appendChild(mediumOption);
+
+const lowOption = document.createElement("option");
+lowOption.value = "Low";
+lowOption.textContent = "Low";
+prioritySelect.appendChild(lowOption);
+
+// Append the drop down menu to the form
+form.appendChild(prioritySelect);
 
 // Append the form to the div container
 container.appendChild(form);
