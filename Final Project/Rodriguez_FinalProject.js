@@ -39,6 +39,10 @@ taskNameInput.type = "text";
 taskNameInput.id = "taskName";
 taskNameInput.name = "taskName";
 form.appendChild(taskNameInput);   // Appends input box to the form
+// Adds spacing between this and next form element
+form.appendChild(document.createElement("br")); 
+form.appendChild(document.createElement("br")); 
+
 
 // CREATE A DROPDOWN MENU TO SELECT TASK PRIORITY (HIGH, MEDIUM, LOW)
 // Label for the priority dropdown menu:
