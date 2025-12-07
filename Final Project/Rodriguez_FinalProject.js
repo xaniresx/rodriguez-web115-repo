@@ -39,3 +39,6 @@ taskNameInput.type = "text";
 taskNameInput.id = "taskName";
 taskNameInput.name = "taskName";
 form.appendChild(taskNameInput);   // Appends input box to the form
+
+// Append the form to the div container
+container.appendChild(form);
