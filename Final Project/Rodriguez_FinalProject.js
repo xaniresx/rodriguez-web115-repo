@@ -22,3 +22,20 @@ console.log(task1);
 const heading = document.createElement("h1");
 heading.textContent = "Task Manager";
 container.appendChild(heading);
+
+// Create the form element
+const form = document.createElement("form");
+form.id = "taskForm";
+
+// Create an input field where users can enter a task name
+// Label for the input box:
+const taskNameLabel = document.createElement("label");
+taskNameLabel.textContent = "Task Name: ";
+form.appendChild(taskNameLabel);
+
+// Input box for the task name:
+const taskNameInput = document.createElement("input");
+taskNameInput.type = "text";
+taskNameInput.id = "taskName";
+taskNameInput.name = "taskName";
+form.appendChild(taskNameInput);   // Appends input box to the form
