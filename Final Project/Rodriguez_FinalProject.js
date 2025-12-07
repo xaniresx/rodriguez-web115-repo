@@ -28,17 +28,14 @@ const form = document.createElement("form");
 form.id = "taskForm";
 
 // CREATE AN INPUT FIELD WHERE USERS CAN ENTER A TASK NAME
-// Label for the input box:
-const taskNameLabel = document.createElement("label");
-taskNameLabel.textContent = "Task Name: ";
-form.appendChild(taskNameLabel);
-
 // Input box for the task name:
 const taskNameInput = document.createElement("input");
 taskNameInput.type = "text";
 taskNameInput.id = "taskName";
 taskNameInput.name = "taskName";
+taskNameInput.placeholder = "Enter Task Name";
 form.appendChild(taskNameInput);   // Appends input box to the form
+
 // Adds spacing between this and next form element
 form.appendChild(document.createElement("br")); 
 form.appendChild(document.createElement("br")); 
