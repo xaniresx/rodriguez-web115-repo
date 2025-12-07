@@ -63,15 +63,23 @@ prioritySelect.appendChild(lowOption);
 form.appendChild(prioritySelect);
 
 // ADD A CHECKBOX FOR MARKING A TASK AS IMPORTANT
+// Create checkbox element:
 const importantCheckbox = document.createElement("input");
 importantCheckbox.type = "checkbox";
 importantCheckbox.id = "isImportant";
 importantCheckbox.name = "isImportant";
 form.appendChild(importantCheckbox);
 
+// Add label next to checkbox:
 const importantLabel = document.createElement("label");
 importantLabel.textContent = "Important"
 form.appendChild(importantLabel);
+
+// CREATE A SUBMIT BUTTON TO ADD THE TASK TO THE LIST
+const submitButton = document.createElement("button");
+submitButton.type = "submit";
+submitButton.textContent = "Add Task";
+form.appendChild(submitButton);
 
 
 // Append the form to the div container
