@@ -91,7 +91,7 @@ form.appendChild(completedCheckbox);
 
 // Add label next to completion checkbox:
 const completedLabel = document.createElement("label");
-completedLabel.texContent = "Done. ";
+completedLabel.textContent = "Done. ";
 form.appendChild(completedLabel);
 
 // CREATE A SUBMIT BUTTON TO ADD THE TASK TO THE LIST
