@@ -11,6 +11,9 @@ function Task(taskId, taskName, taskPriority, isImportant, isCompleted, taskDate
 // Array to store tasks
 let tasks = [];
 
+// Task counter
+let taskIDcounter = 0;
+
 // Container for div element "taskManager"
 const container = document.getElementById("taskManager");
 
@@ -94,7 +97,12 @@ form.addEventListener('submit', function(e) {
 
     // Create a new task object with the form input values
     const newTask = new Task(
-
+        taskIDcounter++,
+        taskNameInput.value,
+        prioritySelect.value,
+        importantCheckbox.checked,
+        completedCheckbox.checked,
+        date
     );
 
     // Add task to array
