@@ -8,6 +8,9 @@ function Task(taskId, taskName, taskPriority, isImportant, isCompleted, taskDate
     this.taskDate = taskDate;
 };
 
+// Array to store tasks
+let tasks = [];
+
 // Container for div element "taskManager"
 const container = document.getElementById("taskManager");
 
@@ -72,7 +75,7 @@ form.appendChild(importantCheckbox);
 
 // Add label next to checkbox:
 const importantLabel = document.createElement("label");
-importantLabel.textContent = "Important"
+importantLabel.textContent = "Important " // Space after text for better formatting for now
 form.appendChild(importantLabel);
 
 // CREATE A SUBMIT BUTTON TO ADD THE TASK TO THE LIST
