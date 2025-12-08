@@ -87,3 +87,21 @@ form.appendChild(submitButton);
 
 // Append the form to the div container
 container.appendChild(form);
+
+// EVENT LISTENER TO SUBMIT TASK VIA THE FORM
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Create a new task object with the form input values
+    const newTask = new Task(
+
+    );
+
+    // Add task to array
+    tasks.push(newTask);
+
+    // Log added task to console in JSON -- NEED TO LOG ~ALL~ CHANGES!**
+    console.log("Task successfully added.\n Current task list:");
+    console.log(JSON.stringify(tasks,null, 1));
+
+});
