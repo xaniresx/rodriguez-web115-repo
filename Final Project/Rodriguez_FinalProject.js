@@ -97,6 +97,17 @@ form.appendChild(submitButton);
 // Append the form to the div container
 container.appendChild(form);
 
+// DIV TO DISPLAY TASKS IN A DEDICATED SECTION OF WEBPAGE
+const displayTaskDiv = document.createElement("div");
+displayTaskDiv.id = "displayTasks";
+container.appendChild(displayTaskDiv); 
+
+// Function to display tasks
+function displayTasks() {
+    displayTaskDiv.innerHTML = "<p>Testing display tasks function.</p>";
+    return;
+}
+
 // EVENT LISTENER TO SUBMIT TASK VIA THE FORM
 form.addEventListener('submit', function(e) {
     e.preventDefault();
