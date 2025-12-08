@@ -108,6 +108,10 @@ container.appendChild(form);
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
+    // Get current date for task 
+    const today = new Date();
+    const todaysDate = today.toLocaleDateString()
+
     // Create a new task object with the form input values
     const newTask = new Task(
         taskIDcounter++,
@@ -115,8 +119,8 @@ form.addEventListener('submit', function(e) {
         prioritySelect.value,
         importantCheckbox.checked,
         completedCheckbox.checked,
-        date
-    );
+        todaysDate
+    ); 
 
     // Add task to array
     tasks.push(newTask);
