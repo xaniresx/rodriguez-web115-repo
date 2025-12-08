@@ -69,17 +69,30 @@ prioritySelect.appendChild(lowOption);
 form.appendChild(prioritySelect);
 
 // ADD A CHECKBOX FOR MARKING A TASK AS IMPORTANT
-// Create checkbox element:
+// Create checkbox element for importance:
 const importantCheckbox = document.createElement("input");
 importantCheckbox.type = "checkbox";
 importantCheckbox.id = "isImportant";
 importantCheckbox.name = "isImportant";
 form.appendChild(importantCheckbox);
 
-// Add label next to checkbox:
+// Add label next to importance checkbox:
 const importantLabel = document.createElement("label");
 importantLabel.textContent = "Important " // Space after text for better formatting for now
 form.appendChild(importantLabel);
+
+// ADD A CHECKBOX FOR MARKING A TASK AS COMPLETED OR DONE
+// Create checkbox element for completion:
+const completedCheckbox = document.createElement("input");
+completedCheckbox.type = "checkbox";
+completedCheckbox.id = "isCompleted";
+completedCheckbox.name = "isCompleted";
+form.appendChild(completedCheckbox);
+
+// Add label next to completion checkbox:
+const completedLabel = document.createElement("label");
+completedLabel.texContent = "Done. ";
+form.appendChild(completedLabel);
 
 // CREATE A SUBMIT BUTTON TO ADD THE TASK TO THE LIST
 const submitButton = document.createElement("button");
@@ -110,6 +123,6 @@ form.addEventListener('submit', function(e) {
 
     // Log added task to console in JSON -- NEED TO LOG ~ALL~ CHANGES!**
     console.log("Task successfully added.\n Current task list:");
-    console.log(JSON.stringify(tasks,null, 1));
+    console.log(JSON.stringify(tasks,null, 1)); // 1 is for spacing!
 
 });
