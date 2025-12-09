@@ -130,7 +130,7 @@ function displayTasks() {
 
         displayTaskDiv.appendChild(taskItem);
 
-    })
+    });
 
 }
 
