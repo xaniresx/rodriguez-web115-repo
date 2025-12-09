@@ -12,17 +12,10 @@ function Task(taskId, taskName, taskPriority, isImportant, isCompleted, taskDate
 let tasks = [];
 
 // Task counter
-let taskIDcounter = 0;
+let taskIDcounter = 1;
 
 // Container for div element "taskManager"
 const container = document.getElementById("taskManager");
-
-// Test to ensure JavaScript is connected -- REMOVE LATER
-console.log("JavaScript is connected :)");
-
-// Sample Task -- REMOVE LATER
-const task1 = new Task(1, "Complete Final Project", "High", true, false, "12/10/2025");
-console.log(task1);
 
 // Add a title heading to the page
 const heading = document.createElement("h1");
@@ -39,6 +32,7 @@ const taskNameInput = document.createElement("input");
 taskNameInput.type = "text";
 taskNameInput.id = "taskName";
 taskNameInput.name = "taskName";
+taskNameInput.required = true;  // Makes task name required! 
 taskNameInput.placeholder = "Enter Task Name";
 form.appendChild(taskNameInput);   // Appends input box to the form
 
@@ -69,14 +63,14 @@ prioritySelect.appendChild(lowOption);
 form.appendChild(prioritySelect);
 
 // ADD A CHECKBOX FOR MARKING A TASK AS IMPORTANT
-// Create checkbox element:
+// Create checkbox element for importance:
 const importantCheckbox = document.createElement("input");
 importantCheckbox.type = "checkbox";
 importantCheckbox.id = "isImportant";
 importantCheckbox.name = "isImportant";
 form.appendChild(importantCheckbox);
 
-// Add label next to checkbox:
+// Add label next to importance checkbox:
 const importantLabel = document.createElement("label");
 importantLabel.textContent = "Important " // Space after text for better formatting for now
 form.appendChild(importantLabel);
@@ -87,13 +81,93 @@ submitButton.type = "submit";
 submitButton.textContent = "Add Task";
 form.appendChild(submitButton);
 
-
 // Append the form to the div container
 container.appendChild(form);
+
+// DIV TO DISPLAY TASKS IN A DEDICATED SECTION OF WEBPAGE
+const displayTaskDiv = document.createElement("div");
+displayTaskDiv.id = "displayTasks";
+container.appendChild(displayTaskDiv); 
+
+// Function to display all tasks
+function displayTasks() {
+    // Clear previous display
+    displayTaskDiv.innerHTML = "";
+
+    // IF no tasks yet -- prompts user to add some.
+    if (tasks.length === 0) {
+        displayTaskDiv.innerHTML = "<p>No tasks yet. Let's add some tasks!</p>";
+        return;
+    }
+
+    // Display each task
+    tasks.forEach(function(task) {
+        // DIV for task item
+        const taskItem = document.createElement("div");
+
+        // Display task name
+        const taskNameText = document.createElement("strong");
+        taskNameText.textContent = task.taskName;
+        taskItem.appendChild(taskNameText);
+
+        // Display task priority
+        const taskPrioritySetting = document.createElement("div");
+        taskPrioritySetting.textContent = "Priority: " + task.taskPriority;
+        taskItem.appendChild(taskPrioritySetting);
+    
+        // Display task date
+        const taskDate = document.createElement("div");
+        taskDate.textContent = "Added: " + task.taskDate;
+        taskItem.appendChild(taskDate);
+
+        // ADD A CHECKBOX FOR MARKING A TASK AS COMPLETED OR DONE
+        // Create checkbox element for completion:
+        const completedCheckbox = document.createElement("input");
+        completedCheckbox.type = "checkbox";
+        completedCheckbox.id = "isCompleted";
+        completedCheckbox.name = "isCompleted";
+        taskItem.appendChild(completedCheckbox);
+
+        // Add label next to completion checkbox:
+        const completedLabel = document.createElement("label");
+        completedLabel.textContent = "Done. ";
+        taskItem.appendChild(completedLabel);
+
+        // Delete button to remove task
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = function() {
+            deleteTask(task.taskId);
+        };
+        taskItem.appendChild(deleteButton);
+
+        displayTaskDiv.appendChild(taskItem);
+    });
+
+}
+
+// FUNCTION TO DELETE A TASK
+function deleteTask(taskId) {
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].taskId === taskId) {
+            tasks.splice(i, 1); // Removes task from array
+            break;
+        }
+    }
+
+    // Print to console after deletion
+    console.log("Task deleted.\n Updated task list: ");
+    console.log(JSON.stringify(tasks,null, 2)); // 2 is for spacing!
+
+}
 
 // EVENT LISTENER TO SUBMIT TASK VIA THE FORM
 form.addEventListener('submit', function(e) {
     e.preventDefault();
+
+    // Get current date for task 
+    const today = new Date();
+    const todaysDate = today.toLocaleDateString()
 
     // Create a new task object with the form input values
     const newTask = new Task(
@@ -101,15 +175,24 @@ form.addEventListener('submit', function(e) {
         taskNameInput.value,
         prioritySelect.value,
         importantCheckbox.checked,
-        completedCheckbox.checked,
-        date
-    );
+        false, // New tasks are not completed by default
+        todaysDate
+    ); 
 
     // Add task to array
     tasks.push(newTask);
 
     // Log added task to console in JSON -- NEED TO LOG ~ALL~ CHANGES!**
     console.log("Task successfully added.\n Current task list:");
-    console.log(JSON.stringify(tasks,null, 1));
+    console.log(JSON.stringify(tasks,null, 2)); // 2 is for spacing!
 
-});
+    // Call displayTask function to update task list on page
+    displayTasks();
+
+    // Reset form after submission
+    form.reset();
+
+}); // END of event listener
+
+// Call displayTasks function
+displayTasks();
