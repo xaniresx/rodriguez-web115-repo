@@ -75,19 +75,6 @@ const importantLabel = document.createElement("label");
 importantLabel.textContent = "Important " // Space after text for better formatting for now
 form.appendChild(importantLabel);
 
-// ADD A CHECKBOX FOR MARKING A TASK AS COMPLETED OR DONE
-// Create checkbox element for completion:
-const completedCheckbox = document.createElement("input");
-completedCheckbox.type = "checkbox";
-completedCheckbox.id = "isCompleted";
-completedCheckbox.name = "isCompleted";
-form.appendChild(completedCheckbox);
-
-// Add label next to completion checkbox:
-const completedLabel = document.createElement("label");
-completedLabel.textContent = "Done. ";
-form.appendChild(completedLabel);
-
 // CREATE A SUBMIT BUTTON TO ADD THE TASK TO THE LIST
 const submitButton = document.createElement("button");
 submitButton.type = "submit";
@@ -133,6 +120,19 @@ function displayTasks() {
         taskDate.textContent = "Added: " + task.taskDate;
         taskItem.appendChild(taskDate);
 
+        // ADD A CHECKBOX FOR MARKING A TASK AS COMPLETED OR DONE
+        // Create checkbox element for completion:
+        const completedCheckbox = document.createElement("input");
+        completedCheckbox.type = "checkbox";
+        completedCheckbox.id = "isCompleted";
+        completedCheckbox.name = "isCompleted";
+        taskItem.appendChild(completedCheckbox);
+
+        // Add label next to completion checkbox:
+        const completedLabel = document.createElement("label");
+        completedLabel.textContent = "Done. ";
+        taskItem.appendChild(completedLabel);
+
         // Delete button to remove task
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
@@ -143,6 +143,21 @@ function displayTasks() {
 
         displayTaskDiv.appendChild(taskItem);
     });
+
+}
+
+// FUNCTION TO DELETE A TASK
+function deleteTask(taskId) {
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].taskId === taskId) {
+            tasks.splice(i, 1); // Removes task from array
+            break;
+        }
+    }
+
+    // Print to console after deletion
+    console.log("Task deleted.\n Updated task list: ");
+    console.log(JSON.stringify(tasks,null, 2)); // 2 is for spacing!
 
 }
 
@@ -160,7 +175,7 @@ form.addEventListener('submit', function(e) {
         taskNameInput.value,
         prioritySelect.value,
         importantCheckbox.checked,
-        completedCheckbox.checked,
+        false, // New tasks are not completed by default
         todaysDate
     ); 
 
@@ -169,7 +184,7 @@ form.addEventListener('submit', function(e) {
 
     // Log added task to console in JSON -- NEED TO LOG ~ALL~ CHANGES!**
     console.log("Task successfully added.\n Current task list:");
-    console.log(JSON.stringify(tasks,null, 1)); // 1 is for spacing!
+    console.log(JSON.stringify(tasks,null, 2)); // 2 is for spacing!
 
     // Call displayTask function to update task list on page
     displayTasks();
