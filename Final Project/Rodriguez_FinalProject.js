@@ -115,6 +115,21 @@ function displayTasks() {
         taskPrioritySetting.textContent = "Priority: " + task.taskPriority;
         taskItem.appendChild(taskPrioritySetting);
 
+        // APPLY STYLING BASED ON PRIORITY -- ORANGE FOR HIGH, BLUE FOR MEDIUM, GREEN FOR LOW
+        if (task.taskPriority === "High") {
+            taskItem.style.borderLeftColor = "orange";
+            taskItem.style.borderLeftStyle = "solid";
+            taskItem.style.borderLeftWidth = "5px";
+        } else if (task.taskPriority === "Medium") {
+            taskItem.style.borderLeftColor = "blue";
+            taskItem.style.borderLeftStyle = "solid";
+            taskItem.style.borderLeftWidth = "5px";
+        } else {
+            taskItem.style.borderLeftColor = "green";
+            taskItem.style.borderLeftStyle = "solid";
+            taskItem.style.borderLeftWidth = "5px";
+        }
+
         // APPLY HIGHLIGHT OF IMPORTANT TASKS IN RED
         if (task.isImportant) {
             taskItem.style.backgroundColor = "lightcoral";
