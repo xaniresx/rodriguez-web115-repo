@@ -122,7 +122,12 @@ function displayTasks() {
         const taskNameText = document.createElement("strong");
         taskNameText.textContent = task.name;
         taskItem.appendChild(taskNameText);
-        
+
+        // Display task priority
+        const taskPrioritySetting = document.createElement("div");
+        taskPrioritySetting.textContent = "Priority: " + task.priority;
+        taskItem.appendChild(taskPrioritySetting);
+    
         // Display task date
         const taskDate = document.createElement("div");
         taskDate.textContent = "Added: " + task.date;
