@@ -104,7 +104,7 @@ container.appendChild(displayTaskDiv);
 
 // Function to display tasks
 function displayTasks() {
-    displayTaskDiv.innerHTML = "<p>Testing display tasks function.</p>";
+    displayTaskDiv.innerHTML = "<p>No tasks yet. Let's add some tasks!</p>";
     return;
 }
 
@@ -133,4 +133,7 @@ form.addEventListener('submit', function(e) {
     console.log("Task successfully added.\n Current task list:");
     console.log(JSON.stringify(tasks,null, 1)); // 1 is for spacing!
 
-});
+}); // END of event listener
+
+// Call displayTasks function
+displayTasks();
