@@ -114,6 +114,29 @@ function displayTasks() {
         const taskPrioritySetting = document.createElement("div");
         taskPrioritySetting.textContent = "Priority: " + task.taskPriority;
         taskItem.appendChild(taskPrioritySetting);
+
+        // APPLY STYLING BASED ON PRIORITY -- ORANGE FOR HIGH, BLUE FOR MEDIUM, GREEN FOR LOW
+        if (task.taskPriority === "High") {
+            taskItem.style.borderLeftColor = "orange";
+            taskItem.style.borderLeftStyle = "solid";
+            taskItem.style.borderLeftWidth = "5px";
+        } else if (task.taskPriority === "Medium") {
+            taskItem.style.borderLeftColor = "blue";
+            taskItem.style.borderLeftStyle = "solid";
+            taskItem.style.borderLeftWidth = "5px";
+        } else {
+            taskItem.style.borderLeftColor = "green";
+            taskItem.style.borderLeftStyle = "solid";
+            taskItem.style.borderLeftWidth = "5px";
+        }
+
+        // APPLY HIGHLIGHT OF IMPORTANT TASKS IN RED
+        if (task.isImportant) {
+            taskItem.style.backgroundColor = "lightcoral";
+            taskItem.style.borderLeftColor = "red";
+            taskItem.style.borderLeftStyle = "solid";
+            taskItem.style.borderLeftWidth = "5px";
+        }
     
         // Display task date
         const taskDate = document.createElement("div");
@@ -132,6 +155,18 @@ function displayTasks() {
         const completedLabel = document.createElement("label");
         completedLabel.textContent = "Done. ";
         taskItem.appendChild(completedLabel);
+
+        // Event listener for completion checkbox:
+        completedCheckbox.addEventListener('change', function() {
+            task.isCompleted = completedCheckbox.checked;
+
+            // Apply or remove strikethrough based on completion status
+            if (task.isCompleted) {
+                taskNameText.style.textDecoration = "line-through";
+            } else {
+                taskNameText.style.textDecoration = "none";
+            }
+        });
 
         // Delete button to remove task
         const deleteButton = document.createElement("button");
@@ -167,7 +202,7 @@ form.addEventListener('submit', function(e) {
 
     // Get current date for task 
     const today = new Date();
-    const todaysDate = today.toLocaleDateString()
+    const todaysDate = today.toLocaleDateString();
 
     // Create a new task object with the form input values
     const newTask = new Task(
