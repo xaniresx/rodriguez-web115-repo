@@ -12,7 +12,7 @@ function Task(taskId, taskName, taskPriority, isImportant, isCompleted, taskDate
 let tasks = [];
 
 // Task counter
-let taskIDcounter = 0;
+let taskIDcounter = 1;
 
 // Container for div element "taskManager"
 const container = document.getElementById("taskManager");
@@ -127,6 +127,8 @@ function displayTasks() {
         const taskDate = document.createElement("div");
         taskDate.textContent = "Added: " + task.date;
         taskItem.appendChild(taskDate);
+
+        displayTaskDiv.appendChild(taskItem);
 
     })
 
