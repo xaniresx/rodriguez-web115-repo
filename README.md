@@ -6,6 +6,8 @@ This repository contains assignments and projects for my Web-115 course.
 
 - **Rodriguez_FormsAssignment.html** - Form validation assignment using regular expressions
 - **Rodriguez_validationScript.js** - JavaScript file for form validation logic
+- **Rodriguez_FinalProject.html** - Final Project Assignment
+- **Rodriguez_FinalProject.js** - JavaScript file for Final Project Logic
 
 ## About
 
