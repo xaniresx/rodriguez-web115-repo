@@ -120,17 +120,17 @@ function displayTasks() {
 
         // Display task name
         const taskNameText = document.createElement("strong");
-        taskNameText.textContent = task.name;
+        taskNameText.textContent = task.taskName;
         taskItem.appendChild(taskNameText);
 
         // Display task priority
         const taskPrioritySetting = document.createElement("div");
-        taskPrioritySetting.textContent = "Priority: " + task.priority;
+        taskPrioritySetting.textContent = "Priority: " + task.taskPriority;
         taskItem.appendChild(taskPrioritySetting);
     
         // Display task date
         const taskDate = document.createElement("div");
-        taskDate.textContent = "Added: " + task.date;
+        taskDate.textContent = "Added: " + task.taskDate;
         taskItem.appendChild(taskDate);
 
         displayTaskDiv.appendChild(taskItem);
