@@ -133,6 +133,18 @@ function displayTasks() {
         completedLabel.textContent = "Done. ";
         taskItem.appendChild(completedLabel);
 
+        // Event listener for completion checkbox:
+        completedCheckbox.addEventListener('change', function() {
+            task.isCompleted = completedCheckbox.checked;
+
+            // Apply or remove strikethrough
+            if (task.isCompleted) {
+                taskNameText.style.textDecoration = "line-through";
+            } else {
+                taskNameText.style.textDecoration = "none";
+            }
+        });
+
         // Delete button to remove task
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
@@ -167,7 +179,7 @@ form.addEventListener('submit', function(e) {
 
     // Get current date for task 
     const today = new Date();
-    const todaysDate = today.toLocaleDateString()
+    const todaysDate = today.toLocaleDateString();
 
     // Create a new task object with the form input values
     const newTask = new Task(
