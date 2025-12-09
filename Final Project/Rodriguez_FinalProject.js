@@ -102,10 +102,34 @@ const displayTaskDiv = document.createElement("div");
 displayTaskDiv.id = "displayTasks";
 container.appendChild(displayTaskDiv); 
 
-// Function to display tasks
+// Function to display all tasks
 function displayTasks() {
-    displayTaskDiv.innerHTML = "<p>No tasks yet. Let's add some tasks!</p>";
-    return;
+    // Clear previous display
+    displayTaskDiv.innerHTML = "";
+
+    // IF no tasks yet -- prompts user to add some.
+    if (tasks.length === 0) {
+        displayTaskDiv.innerHTML = "<p>No tasks yet. Let's add some tasks!</p>";
+        return;
+    }
+
+    // Display each task
+    tasks.forEach(function(task) {
+        // DIV for task item
+        const taskItem = document.createElement("div");
+
+        // Display task name
+        const taskNameText = document.createElement("strong");
+        taskNameText.textContent = task.name;
+        taskItem.appendChild(taskNameText);
+        
+        // Display task date
+        const taskDate = document.createElement("div");
+        taskDate.textContent = "Added: " + task.date;
+        taskItem.appendChild(taskDate);
+
+    })
+
 }
 
 // EVENT LISTENER TO SUBMIT TASK VIA THE FORM
