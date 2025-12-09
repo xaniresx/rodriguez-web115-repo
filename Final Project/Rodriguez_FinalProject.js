@@ -114,6 +114,14 @@ function displayTasks() {
         const taskPrioritySetting = document.createElement("div");
         taskPrioritySetting.textContent = "Priority: " + task.taskPriority;
         taskItem.appendChild(taskPrioritySetting);
+
+        // APPLY HIGHLIGHT OF IMPORTANT TASKS IN RED
+        if (task.isImportant) {
+            taskItem.style.backgroundColor = "lightcoral";
+            taskItem.style.borderLeftColor = "red";
+            taskItem.style.borderLeftStyle = "solid";
+            taskItem.style.borderLeftWidth = "5px";
+        }
     
         // Display task date
         const taskDate = document.createElement("div");
@@ -137,7 +145,7 @@ function displayTasks() {
         completedCheckbox.addEventListener('change', function() {
             task.isCompleted = completedCheckbox.checked;
 
-            // Apply or remove strikethrough
+            // Apply or remove strikethrough based on completion status
             if (task.isCompleted) {
                 taskNameText.style.textDecoration = "line-through";
             } else {
