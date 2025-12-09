@@ -32,6 +32,7 @@ const taskNameInput = document.createElement("input");
 taskNameInput.type = "text";
 taskNameInput.id = "taskName";
 taskNameInput.name = "taskName";
+taskNameInput.required = true;  // Makes task name required! 
 taskNameInput.placeholder = "Enter Task Name";
 form.appendChild(taskNameInput);   // Appends input box to the form
 
@@ -93,7 +94,6 @@ submitButton.type = "submit";
 submitButton.textContent = "Add Task";
 form.appendChild(submitButton);
 
-
 // Append the form to the div container
 container.appendChild(form);
 
@@ -133,8 +133,15 @@ function displayTasks() {
         taskDate.textContent = "Added: " + task.taskDate;
         taskItem.appendChild(taskDate);
 
-        displayTaskDiv.appendChild(taskItem);
+        // Delete button to remove task
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = function() {
+            deleteTask(task.taskId);
+        };
+        taskItem.appendChild(deleteButton);
 
+        displayTaskDiv.appendChild(taskItem);
     });
 
 }
