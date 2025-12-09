@@ -159,6 +159,12 @@ form.addEventListener('submit', function(e) {
     console.log("Task successfully added.\n Current task list:");
     console.log(JSON.stringify(tasks,null, 1)); // 1 is for spacing!
 
+    // Call displayTask function to update task list on page
+    displayTasks();
+
+    // Reset form after submission
+    form.reset();
+
 }); // END of event listener
 
 // Call displayTasks function
